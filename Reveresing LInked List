@@ -1,0 +1,96 @@
+//Subscribe to AshishIsHere
+//Aurthor AshishIsHere
+//this code contains single linked list
+//inserting at head,tail,after a position
+//so let's start
+#include<iostream>
+using namespace std;
+//our data structure which contains data and addres of next data
+struct node{
+    int data;
+    node* next;
+};
+node* head=NULL;
+//to insert node at tail
+void ins_t(int val){
+    node* n=new node();
+    n->data=val;
+    if(head==NULL){
+        head=n;
+        return;
+    }
+    node* t=head;
+    while(t->next!=NULL){
+        t=t->next;
+    }
+    t->next=n;
+    n->next=NULL;
+}
+//to insert node at head
+void ins_h(int val){
+    node* n=new node();
+    n->data=val;
+    if(head==NULL){
+        head=n;
+        return;
+
+    }
+    n->next=head;
+    head=n;
+}
+//insert node at given positions
+void ins_pn(int pos,int val){
+
+    pos--;
+    if(pos==0){
+        ins_h(val);
+        return;
+
+    }
+    node* n=new node();
+    n->data=val;
+    node* t=head;
+    while(t->next!=NULL && pos>0){
+        t=t->next;
+        pos--;
+    }
+    node* t2=t->next;
+    t->next=n;
+    n->next=t2;
+}
+//to reverse linked list
+node* rev(node* head){
+    node* prev=NULL;
+    node* curr=head;
+    node* nex;
+    while(curr!=NULL){
+        nex=curr->next;
+        curr->next=prev;
+
+        prev=curr;
+        curr=nex;
+    }
+  return prev;
+}
+void pri
+(node* head){
+    node* t=head;
+    while(t!=NULL){
+        cout<<t->data<<" ";
+        t=t->next;
+    }
+    return;
+}
+//int main function
+int main(){
+    //entering nodes
+    ins_h(2);
+    ins_t(3);
+    ins_t(8);
+    ins_pn(2,6);
+
+    pri(head);
+    cout<<"\n";
+   node* n=rev(head);// creating n to store head of reveresed node 
+    pri(n);
+}
