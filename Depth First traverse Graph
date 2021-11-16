@@ -1,0 +1,45 @@
+//Subscribe to AshishIsHere
+//Aurthor AshishIsHere
+//This code contains graph dfs
+//so let's start
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> a[10007];
+bool vis[10007];
+void dfs(int node){
+    vis[node]=1;
+  
+    
+    vector <int> :: iterator it;
+    for(it=a[node].begin();it!=a[node].end();it++){
+        if(vis[*it]);
+        else{
+            dfs(*it);
+        }
+    }
+     
+
+   cout<<node<<" ";
+}
+int main(){
+    int n,m;
+    cin>>n>>m;
+    
+    for(int i=0;i<=n;i++){
+        vis[i]=false;
+
+    }
+    
+    for(int i=0;i<m;i++){
+        int x,y;
+        cin>>x>>y;
+        a[x].push_back(y);
+        a[y].push_back(x);
+    }
+
+//1 is our starting node    
+dfs(1);
+
+
+    
+}
